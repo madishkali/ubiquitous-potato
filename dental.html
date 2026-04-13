@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DentPro Clinic — Стоматология в Алматы | Безболезненное лечение</title>
+  <meta name="description" content="DentPro — премиум стоматология в Алматы. Имплантация, отбеливание, брекеты, детская стоматология. Современное оборудование, опытные врачи. Запишитесь онлайн.">
+  <meta name="keywords" content="стоматология Алматы, зубной врач Алматы, имплантация зубов, отбеливание зубов, брекеты, DentPro">
+  <meta property="og:title" content="DentPro Clinic — Премиум стоматология в Алматы">
+  <meta property="og:description" content="Здоровая улыбка — счастливая жизнь. Современное оборудование, 15 врачей, безболезненное лечение.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0F1E;
+      --surface: #111827;
+      --card: #1a2235;
+      --text: #F9FAFB;
+      --text-secondary: #9CA3AF;
+      --gold: #C9A84C;
+      --gold-light: #e0be74;
+      --gold-dark: #a07830;
+      --blue: #4F9CF9;
+      --border: rgba(201,168,76,0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gold-light); }
+
+    /* ── Typography ── */
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.25; }
+    h1 { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 700; }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; }
+    h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 600; }
+
+    /* ── Utility ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(201,168,76,0.1);
+      border: 1px solid var(--border);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .section-title { margin-bottom: 16px; }
+    .section-sub { color: var(--text-secondary); font-size: 1.05rem; max-width: 560px; margin-bottom: 56px; }
+    .gold { color: var(--gold); }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+      text-decoration: none;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #0A0F1E;
+    }
+    .btn-gold:hover { background: linear-gradient(135deg, var(--gold-light), var(--gold)); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid rgba(249,250,251,0.25);
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .btn-blue {
+      background: var(--blue);
+      color: #fff;
+    }
+    .btn-blue:hover { background: #3a87f0; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,156,249,0.3); }
+
+    /* ── Fade-in animation ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+    .fade-in-delay-5 { transition-delay: 0.5s; }
+    .fade-in-delay-6 { transition-delay: 0.6s; }
+
+    /* ══════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      padding: 0 24px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(10,15,30,0.85);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--text); margin: 5px 0;
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 24px;
+      flex-direction: column;
+      gap: 24px;
+      z-index: 998;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text); text-decoration: none;
+      font-size: 1.1rem; font-weight: 500;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 72px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    /* subtle cross pattern */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    /* medical cross */
+    .hero-bg::after {
+      content: '+';
+      position: absolute;
+      right: 8%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 28rem;
+      font-weight: 800;
+      color: rgba(201,168,76,0.03);
+      font-family: 'Inter', sans-serif;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      top: 50%; left: -10%;
+      transform: translateY(-50%);
+    }
+    .hero-glow-2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,156,249,0.06) 0%, transparent 70%);
+      top: 20%; right: 5%;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid var(--border);
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before { content: '✦'; font-size: 0.6rem; }
+    .hero h1 { margin-bottom: 24px; }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-sub {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+      max-width: 540px;
+    }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 64px; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 680px;
+      border: 1px solid var(--border);
+    }
+    .hero-stat {
+      background: rgba(26,34,53,0.8);
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .hero-stat-num {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .hero-stat-label { font-size: 0.78rem; color: var(--text-secondary); font-weight: 500; }
+
+    /* ══════════════════════════════════════════
+       ABOUT
+    ══════════════════════════════════════════ */
+    #about { background: var(--surface); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .about-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .about-feature:hover { border-color: var(--gold); color: var(--text); }
+    .about-feature-icon {
+      width: 32px; height: 32px;
+      background: rgba(201,168,76,0.12);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .about-numbers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .about-num-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .about-num-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+    .about-num-card .num {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .about-num-card .label { font-size: 0.85rem; color: var(--text-secondary); }
+
+    /* ══════════════════════════════════════════
+       SERVICES
+    ══════════════════════════════════════════ */
+    #services { background: var(--bg); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .service-card:hover { transform: translateY(-6px); border-color: rgba(201,168,76,0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      width: 52px; height: 52px;
+      background: rgba(201,168,76,0.1);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      transition: background 0.3s;
+    }
+    .service-card:hover .service-icon { background: rgba(201,168,76,0.2); }
+    .service-card h3 { margin-bottom: 12px; font-size: 1.15rem; }
+    .service-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; }
+    .service-price {
+      display: inline-block;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--gold);
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    /* ══════════════════════════════════════════
+       DOCTORS
+    ══════════════════════════════════════════ */
+    #doctors { background: var(--surface); }
+    .doctors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .doctor-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .doctor-card:hover { transform: translateY(-6px); border-color: rgba(201,168,76,0.4); }
+    .doctor-avatar {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #0A0F1E;
+      margin: 0 auto 20px;
+      border: 3px solid rgba(201,168,76,0.3);
+    }
+    .doctor-card h3 { font-size: 1.2rem; margin-bottom: 6px; }
+    .doctor-specialty {
+      color: var(--gold);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .doctor-exp {
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      margin-bottom: 16px;
+    }
+    .doctor-bio {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .doctor-edu {
+      color: var(--blue);
+      font-size: 0.8rem;
+      margin-bottom: 24px;
+    }
+
+    /* ══════════════════════════════════════════
+       PRICES
+    ══════════════════════════════════════════ */
+    #prices { background: var(--bg); }
+    .prices-header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 48px; }
+    .prices-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .price-category {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .price-category-header {
+      background: rgba(201,168,76,0.08);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .price-category-header span { font-size: 1.1rem; }
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: background 0.2s;
+    }
+    .price-row:last-child { border-bottom: none; }
+    .price-row:hover { background: rgba(201,168,76,0.04); }
+    .price-name { font-size: 0.9rem; color: var(--text-secondary); }
+    .price-amount { font-size: 0.9rem; font-weight: 600; color: var(--text); white-space: nowrap; }
+
+    /* ══════════════════════════════════════════
+       REVIEWS
+    ══════════════════════════════════════════ */
+    #reviews { background: var(--surface); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .review-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 28px;
+      position: relative;
+      transition: transform 0.3s;
+    }
+    .review-card:hover { transform: translateY(-4px); }
+    .review-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 16px; right: 24px;
+      font-size: 5rem;
+      line-height: 1;
+      color: rgba(201,168,76,0.12);
+      font-family: 'Playfair Display', serif;
+      pointer-events: none;
+    }
+    .review-stars { color: var(--gold); font-size: 1rem; margin-bottom: 16px; letter-spacing: 2px; }
+    .review-text { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7; margin-bottom: 24px; font-style: italic; }
+    .review-author { display: flex; align-items: center; gap: 12px; }
+    .review-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 700; color: #0A0F1E;
+      flex-shrink: 0;
+    }
+    .review-name { font-weight: 600; font-size: 0.9rem; }
+    .review-date { font-size: 0.78rem; color: var(--text-secondary); margin-top: 2px; }
+
+    /* ══════════════════════════════════════════
+       BOOKING
+    ══════════════════════════════════════════ */
+    #booking {
+      background: linear-gradient(135deg, #0d1528, #111827);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .booking-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .booking-left h2 { margin-bottom: 16px; }
+    .booking-left p { color: var(--text-secondary); font-size: 1rem; margin-bottom: 32px; }
+    .booking-perks { display: flex; flex-direction: column; gap: 16px; }
+    .booking-perk {
+      display: flex; align-items: center; gap: 14px;
+      color: var(--text-secondary); font-size: 0.9rem;
+    }
+    .booking-perk-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+    .booking-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+    }
+    .booking-form h3 {
+      font-size: 1.3rem;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--surface);
+      border: 1.5px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+    }
+    .form-group select { cursor: pointer; }
+    .form-group select option { background: var(--surface); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-submit { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .form-submit .btn { width: 100%; justify-content: center; }
+    .form-divider { display: flex; align-items: center; gap: 12px; }
+    .form-divider span { color: var(--text-secondary); font-size: 0.82rem; white-space: nowrap; }
+    .form-divider::before, .form-divider::after {
+      content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.08);
+    }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    footer {
+      background: #080c18;
+      border-top: 1px solid var(--border);
+      padding: 60px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .logo { font-size: 1.4rem; display: inline-block; margin-bottom: 12px; }
+    .footer-tagline { color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 20px; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+    .footer-col h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-contact-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      color: var(--text-secondary); font-size: 0.88rem;
+      margin-bottom: 12px;
+    }
+    .footer-contact-icon { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .footer-contact-item a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+    .footer-contact-item a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+    }
+
+    /* ══════════════════════════════════════════
+       WHATSAPP FLOAT
+    ══════════════════════════════════════════ */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 990;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: pulse-wa 2s infinite;
+    }
+    .whatsapp-float:hover { transform: scale(1.12); box-shadow: 0 8px 28px rgba(37,211,102,0.5); animation: none; }
+    .whatsapp-float svg { width: 28px; height: 28px; fill: #fff; }
+    @keyframes pulse-wa {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 4px 28px rgba(37,211,102,0.65); }
+    }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 64px 0; }
+      .nav-links, .nav-right .btn { display: none; }
+      .hamburger { display: block; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-numbers { order: -1; }
+      .services-grid { grid-template-columns: 1fr; }
+      .doctors-grid { grid-template-columns: 1fr; }
+      .prices-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .booking-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { width: 100%; justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .about-features { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">Dent<span>Pro</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#doctors">Врачи</a></li>
+      <li><a href="#prices">Цены</a></li>
+      <li><a href="#booking">Контакты</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#booking" class="btn btn-gold">Записаться</a>
+      <button class="hamburger" id="hamburger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMobile()">Услуги</a>
+  <a href="#doctors" onclick="closeMobile()">Врачи</a>
+  <a href="#prices" onclick="closeMobile()">Цены</a>
+  <a href="#booking" onclick="closeMobile()">Контакты</a>
+  <a href="#booking" class="btn btn-gold" style="text-align:center;justify-content:center;" onclick="closeMobile()">Записаться</a>
+</div>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge fade-in">Премиум стоматология в Алматы</div>
+      <h1 class="fade-in fade-in-delay-1">
+        Здоровая улыбка —<br><em>счастливая жизнь</em>
+      </h1>
+      <p class="hero-sub fade-in fade-in-delay-2">
+        Современное оборудование. Опытные врачи. Безболезненное лечение.
+      </p>
+      <div class="hero-ctas fade-in fade-in-delay-3">
+        <a href="#booking" class="btn btn-gold">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Записаться онлайн
+        </a>
+        <a href="#prices" class="btn btn-outline">Узнать цены</a>
+      </div>
+      <div class="hero-stats fade-in fade-in-delay-4">
+        <div class="hero-stat">
+          <span class="hero-stat-num">8</span>
+          <span class="hero-stat-label">лет опыта</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">5000+</span>
+          <span class="hero-stat-label">пациентов</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">15</span>
+          <span class="hero-stat-label">врачей</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">4.9 ★</span>
+          <span class="hero-stat-label">рейтинг</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ABOUT ══════════════ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <span class="section-label fade-in">О клинике</span>
+        <h2 class="section-title fade-in fade-in-delay-1">О клинике <span class="gold">DentPro</span></h2>
+        <p class="fade-in fade-in-delay-2" style="color:var(--text-secondary);font-size:1rem;line-height:1.75;margin-bottom:16px;">
+          Клиника DentPro работает с 2018 года. Мы используем современное европейское оборудование и материалы премиум-класса. Наша команда из 15 специалистов заботится о здоровье ваших зубов с индивидуальным подходом к каждому пациенту.
+        </p>
+        <p class="fade-in fade-in-delay-3" style="color:var(--text-secondary);font-size:1rem;line-height:1.75;margin-bottom:32px;">
+          Безболезненное лечение — наш главный принцип. Мы создаём атмосферу доверия и комфорта, чтобы каждый визит был приятным опытом для всей семьи.
+        </p>
+        <div class="about-features fade-in fade-in-delay-4">
+          <div class="about-feature">
+            <div class="about-feature-icon">🦷</div>
+            Современное оборудование
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">💉</div>
+            Безболезненное лечение
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">✅</div>
+            Гарантия на работы
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">👶</div>
+            Детская стоматология
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">📱</div>
+            Онлайн-запись
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">💳</div>
+            Оплата картой
+          </div>
+        </div>
+      </div>
+      <div class="about-numbers">
+        <div class="about-num-card fade-in">
+          <span class="num">8</span>
+          <span class="label">лет на рынке</span>
+        </div>
+        <div class="about-num-card fade-in fade-in-delay-1">
+          <span class="num">5000+</span>
+          <span class="label">довольных пациентов</span>
+        </div>
+        <div class="about-num-card fade-in fade-in-delay-2">
+          <span class="num">15</span>
+          <span class="label">врачей-специалистов</span>
+        </div>
+        <div class="about-num-card fade-in fade-in-delay-3">
+          <span class="num">4.9★</span>
+          <span class="label">средний рейтинг</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SERVICES ══════════════ -->
+<section id="services" class="section">
+  <div class="container">
+    <span class="section-label fade-in">Что мы делаем</span>
+    <h2 class="section-title fade-in fade-in-delay-1">Наши <span class="gold">услуги</span></h2>
+    <p class="section-sub fade-in fade-in-delay-2">Полный спектр стоматологических услуг для всей семьи на современном оборудовании.</p>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">🦷</div>
+        <h3>Имплантация</h3>
+        <p>Установка зубных имплантов премиум-класса. Пожизненная функциональность и эстетика. Гарантия 10 лет на все работы.</p>
+        <span class="service-price">от 150 000 ₸</span>
+      </div>
+      <div class="service-card fade-in fade-in-delay-1">
+        <div class="service-icon">✨</div>
+        <h3>Отбеливание</h3>
+        <p>Профессиональное отбеливание Zoom 4 нового поколения. Видимый результат уже за один час процедуры.</p>
+        <span class="service-price">от 45 000 ₸</span>
+      </div>
+      <div class="service-card fade-in fade-in-delay-2">
+        <div class="service-icon">🔧</div>
+        <h3>Брекеты</h3>
+        <p>Металлические, керамические и сапфировые системы. Идеальный прикус без компромиссов по эстетике.</p>
+        <span class="service-price">от 180 000 ₸</span>
+      </div>
+      <div class="service-card fade-in fade-in-delay-3">
+        <div class="service-icon">💊</div>
+        <h3>Лечение кариеса</h3>
+        <p>Безболезненное лечение с современной анестезией. Световые пломбы естественного цвета. Гарантия 2 года.</p>
+        <span class="service-price">от 12 000 ₸</span>
+      </div>
+      <div class="service-card fade-in fade-in-delay-4">
+        <div class="service-icon">🎈</div>
+        <h3>Детская стоматология</h3>
+        <p>Лечение в игровой форме с особым детским подходом. Без страха и боли — дети уходят довольными.</p>
+        <span class="service-price">от 8 000 ₸</span>
+      </div>
+      <div class="service-card fade-in fade-in-delay-5">
+        <div class="service-icon">🪥</div>
+        <h3>Чистка и гигиена</h3>
+        <p>Профессиональная чистка ультразвуком и Air Flow с финишной полировкой. Профилактика заболеваний дёсен.</p>
+        <span class="service-price">от 15 000 ₸</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ DOCTORS ══════════════ -->
+<section id="doctors" class="section">
+  <div class="container">
+    <span class="section-label fade-in">Профессионалы</span>
+    <h2 class="section-title fade-in fade-in-delay-1">Наши <span class="gold">врачи</span></h2>
+    <p class="section-sub fade-in fade-in-delay-2">Опытные специалисты с международными сертификатами и многолетней практикой.</p>
+    <div class="doctors-grid">
+      <div class="doctor-card fade-in">
+        <div class="doctor-avatar">АС</div>
+        <h3>Айгерим Сейткали</h3>
+        <div class="doctor-specialty">Главный врач · Имплантолог</div>
+        <div class="doctor-exp">Стаж 12 лет</div>
+        <p class="doctor-bio">Специализируется на имплантации и челюстно-лицевой хирургии. Провела более 1 200 успешных имплантаций.</p>
+        <p class="doctor-edu">🎓 КазНМУ · Стажировка в Германии (Berlin Dental Academy)</p>
+        <a href="#booking" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:8px;">Записаться</a>
+      </div>
+      <div class="doctor-card fade-in fade-in-delay-1">
+        <div class="doctor-avatar">ДВ</div>
+        <h3>Дмитрий Волков</h3>
+        <div class="doctor-specialty">Ортодонт</div>
+        <div class="doctor-exp">Стаж 8 лет</div>
+        <p class="doctor-bio">Специализируется на брекет-системах и элайнерах. Более 800 пациентов с идеальным прикусом.</p>
+        <p class="doctor-edu">🎓 АГИУВ · Сертификат Invisalign Certified Provider</p>
+        <a href="#booking" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:8px;">Записаться</a>
+      </div>
+      <div class="doctor-card fade-in fade-in-delay-2">
+        <div class="doctor-avatar">МК</div>
+        <h3>Мадина Касымова</h3>
+        <div class="doctor-specialty">Детский стоматолог</div>
+        <div class="doctor-exp">Стаж 6 лет</div>
+        <p class="doctor-bio">Специалист по детской стоматологии и профилактике. Умеет найти подход к самым капризным пациентам.</p>
+        <p class="doctor-edu">🎓 КазНМУ · Курс детской стоматологии (Москва)</p>
+        <a href="#booking" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:8px;">Записаться</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PRICES ══════════════ -->
+<section id="prices" class="section">
+  <div class="container">
+    <div class="prices-header">
+      <div>
+        <span class="section-label fade-in">Стоимость</span>
+        <h2 class="section-title fade-in fade-in-delay-1">Прозрачные <span class="gold">цены</span></h2>
+        <p style="color:var(--text-secondary);font-size:1rem;" class="fade-in fade-in-delay-2">Без скрытых платежей и неожиданных доплат</p>
+      </div>
+      <a href="#booking" class="btn btn-gold fade-in">Получить консультацию</a>
+    </div>
+    <div class="prices-grid">
+      <div class="price-category fade-in">
+        <div class="price-category-header"><span>🦷</span> Терапия</div>
+        <div class="price-row">
+          <span class="price-name">Консультация врача</span>
+          <span class="price-amount">5 000 ₸</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Лечение кариеса</span>
+          <span class="price-amount">от 12 000 ₸</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Пломба световая</span>
+          <span class="price-amount">от 10 000 ₸</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Удаление зуба</span>
+          <span class="price-amount">от 8 000 ₸</span>
+        </div>
+      </div>
+      <div class="price-category fade-in fade-in-delay-1">
+        <div class="price-category-header"><span>🔧</span> Ортодонтия</div>
+        <div class="price-row">
+          <span class="price-name">Металлические брекеты</span>
+          <span class="price-amount">от 180 000 ₸</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Керамические брекеты</span>
+          <span class="price-amount">от 280 000 ₸</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Элайнеры (Invisalign)</span>
+          <span class="price-amount">от 350 000 ₸</span>
+        </div>
+      </div>
+      <div class="price-category fade-in fade-in-delay-2">
+        <div class="price-category-header"><span>✨</span> Эстетика</div>
+        <div class="price-row">
+          <span class="price-name">Отбеливание Zoom 4</span>
+          <span class="price-amount">45 000 ₸</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Виниры (1 зуб)</span>
+          <span class="price-amount">от 80 000 ₸</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Профессиональная чистка</span>
+          <span class="price-amount">15 000 ₸</span>
+        </div>
+      </div>
+      <div class="price-category fade-in fade-in-delay-3">
+        <div class="price-category-header"><span>🏥</span> Имплантация</div>
+        <div class="price-row">
+          <span class="price-name">Имплант + коронка</span>
+          <span class="price-amount">от 150 000 ₸</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Синус-лифтинг</span>
+          <span class="price-amount">от 80 000 ₸</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Костная пластика</span>
+          <span class="price-amount">от 60 000 ₸</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ REVIEWS ══════════════ -->
+<section id="reviews" class="section">
+  <div class="container">
+    <span class="section-label fade-in">Отзывы</span>
+    <h2 class="section-title fade-in fade-in-delay-1">Что говорят <span class="gold">пациенты</span></h2>
+    <p class="section-sub fade-in fade-in-delay-2">Более 5 000 довольных пациентов за 8 лет работы</p>
+    <div class="reviews-grid">
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">«Наконец нашла стоматолога которого не боюсь! Айгерим Сейткали — просто волшебник. Лечение абсолютно безболезненное, всё объяснила подробно. Теперь хожу только сюда!»</p>
+        <div class="review-author">
+          <div class="review-avatar">ДК</div>
+          <div>
+            <div class="review-name">Дана К.</div>
+            <div class="review-date">Март 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card fade-in fade-in-delay-1">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">«Поставили импланты — результат превзошёл все ожидания. Цена честная, никаких скрытых платежей. Врачи объяснили каждый шаг. Рекомендую всем друзьям!»</p>
+        <div class="review-author">
+          <div class="review-avatar">АМ</div>
+          <div>
+            <div class="review-name">Андрей М.</div>
+            <div class="review-date">Февраль 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card fade-in fade-in-delay-2">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">«Привела ребёнка 5 лет — он вышел довольный! Мадина нашла подход, никаких слёз и капризов. Теперь ходим всей семьёй только в DentPro.»</p>
+        <div class="review-author">
+          <div class="review-avatar">АБ</div>
+          <div>
+            <div class="review-name">Алия Б.</div>
+            <div class="review-date">Январь 2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ BOOKING ══════════════ -->
+<section id="booking" class="section">
+  <div class="container">
+    <div class="booking-inner">
+      <div class="booking-left">
+        <span class="section-label fade-in">Запись</span>
+        <h2 class="fade-in fade-in-delay-1">Запишитесь онлайн <span class="gold">прямо сейчас</span></h2>
+        <p class="fade-in fade-in-delay-2">Оставьте заявку и наш администратор свяжется с вами в течение 15 минут для подтверждения записи.</p>
+        <div class="booking-perks fade-in fade-in-delay-3">
+          <div class="booking-perk">
+            <div class="booking-perk-dot"></div>
+            Консультация без очереди
+          </div>
+          <div class="booking-perk">
+            <div class="booking-perk-dot"></div>
+            Напомним о визите за день
+          </div>
+          <div class="booking-perk">
+            <div class="booking-perk-dot"></div>
+            Гибкое расписание с 9:00 до 20:00
+          </div>
+          <div class="booking-perk">
+            <div class="booking-perk-dot"></div>
+            Удобная парковка рядом с клиникой
+          </div>
+        </div>
+      </div>
+      <div class="booking-form fade-in fade-in-delay-2">
+        <h3>Онлайн-запись</h3>
+        <form onsubmit="handleFormSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Ваше имя</label>
+              <input type="text" placeholder="Имя Фамилия" required>
+            </div>
+            <div class="form-group">
+              <label>Телефон</label>
+              <input type="tel" placeholder="+7 (___) ___-__-__" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Услуга</label>
+            <select required>
+              <option value="" disabled selected>Выберите услугу</option>
+              <option>Консультация</option>
+              <option>Имплантация</option>
+              <option>Отбеливание Zoom 4</option>
+              <option>Брекеты</option>
+              <option>Лечение кариеса</option>
+              <option>Детская стоматология</option>
+              <option>Профессиональная чистка</option>
+              <option>Другое</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Удобное время</label>
+            <select>
+              <option value="" disabled selected>Выберите время</option>
+              <option>Утро (9:00–12:00)</option>
+              <option>День (12:00–16:00)</option>
+              <option>Вечер (16:00–20:00)</option>
+              <option>Суббота (10:00–18:00)</option>
+            </select>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-gold">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.47 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Отправить заявку
+            </button>
+            <div class="form-divider"><span>или свяжитесь через</span></div>
+            <a href="https://wa.me/77771112233" target="_blank" class="btn btn-blue" style="justify-content:center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">Dent<span>Pro</span></a>
+        <p class="footer-tagline">Здоровая улыбка — счастливая жизнь.<br>Премиум стоматология в Алматы с 2018 года.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/dentpro_almaty" target="_blank" title="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://wa.me/77771112233" target="_blank" title="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Услуги</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Имплантация</a></li>
+          <li><a href="#services">Отбеливание</a></li>
+          <li><a href="#services">Брекеты</a></li>
+          <li><a href="#services">Лечение кариеса</a></li>
+          <li><a href="#services">Детская стоматология</a></li>
+          <li><a href="#services">Профчистка</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Клиника</h4>
+        <ul class="footer-links">
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#doctors">Врачи</a></li>
+          <li><a href="#prices">Цены</a></li>
+          <li><a href="#reviews">Отзывы</a></li>
+          <li><a href="#booking">Запись</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">📍</span>
+          пр. Аль-Фараби, 77, Алматы
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">📞</span>
+          <a href="tel:+77771112233">+7-777-111-22-33</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">💬</span>
+          <a href="https://wa.me/77771112233" target="_blank">WhatsApp</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">📸</span>
+          <a href="https://instagram.com/dentpro_almaty" target="_blank">@dentpro_almaty</a>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">🕐</span>
+          <div>
+            Пн–Пт: 9:00–20:00<br>
+            Сб: 10:00–18:00<br>
+            Вс: выходной
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 DentPro Clinic. Все права защищены.</span>
+      <span>Лицензия № 001234 МЗ РК</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════ WHATSAPP FLOAT ══════════════ -->
+<a href="https://wa.me/77771112233" class="whatsapp-float" target="_blank" title="Написать в WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // ── Hamburger menu ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+
+  // ── Intersection Observer fade-in ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ── Smooth active nav on scroll ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--gold)' : '';
+    });
+  });
+
+  // ── Form submit ──
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = '✓ Заявка отправлена!';
+    btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Отправить заявку';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 4000);
+  }
+</script>
+</body>
+</html>
